@@ -1,11 +1,9 @@
-import Link from "next/link";
+import HeroesImage from "../../components/HeroesImage";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-16 sm:p-20">
-      <main className="flex flex-col gap-8">
-        <h1 className="text-4xl">Welcome</h1>
-      </main>
-    </div>
+    <main className="flex flex-col items-center justify-center min-h-auto gap-16 px-4 py-16 sm:p-20">
+      <HeroesImage />
+    </main>
   );
 }

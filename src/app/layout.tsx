@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col items-stretch font-[family-name:var(--font-nunito-sans)] antialiased`}
+        className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col font-[family-name:var(--font-nunito-sans)] antialiased`}
       >
         <HeaderFoodies />
         {children}
