@@ -12,7 +12,9 @@ export default function HeroesImage() {
         {/* left area banner */}
         <div className="flex flex-col justify-center gap-4 items-start font-bold text-white w-1/2">
           <h1 className="text-6xl">Best Veggie Food in Jakarta</h1>
-          <p className="text-lg">You won't believe you have some greens</p>
+          <p className="text-md font-light">
+            You won't believe you have some greens
+          </p>
           <div className="flex flex-row flex-nowrap gap-4 mt-4">
             <Link href="/meals">
               <Button className="flex items-center gap-2 rounded-4xl bg-white text-[#2d2d2d] py-4 px-12 text-sm hover:bg-gray-200 active:bg-gray-300 hover:cursor-pointer">

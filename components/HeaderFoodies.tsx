@@ -1,12 +1,13 @@
 import Image from "next/image";
 import foodies from "../public/foodies.webp";
 import Link from "next/link";
+import NavLink from "./NavLink";
 
 export default function HeaderFoodies() {
   return (
     <>
-      <header className="flex flex-row w-full bg-white shadow justify-center fixed items-center py-4 px-6 max-h-[5rem] lg:px-0">
-        <div className="w-[1440px] flex flex-row justify-between items-center">
+      <header className="flex flex-row w-full bg-white shadow justify-center fixed items-center max-h-[5rem]">
+        <div className="w-[1440px] flex flex-row justify-between items-center py-4">
           <Link href="/">
             <Image
               src={foodies}
@@ -18,10 +19,10 @@ export default function HeaderFoodies() {
           <nav className="hidden sm:block">
             <ul className="flex flex-row gap-8">
               <li>
-                <Link href="/meals">Browse Meals</Link>
+                <NavLink href="/meals">Browse Meals</NavLink>
               </li>
               <li>
-                <Link href="/community">Browse Community</Link>
+                <NavLink href="/community">Browse Meals</NavLink>
               </li>
             </ul>
           </nav>
