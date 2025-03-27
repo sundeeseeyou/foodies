@@ -1,9 +1,11 @@
 import HeroesImage from "../../components/HeroesImage";
+import SectionImageText from "../../components/SectionImageText";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-[90dvh] gap-16 px-4 py-16 sm:p-20">
+    <main className="flex flex-col items-center justify-center gap-8 py-16">
       <HeroesImage />
+      <SectionImageText></SectionImageText>
     </main>
   );
 }

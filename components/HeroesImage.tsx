@@ -30,6 +30,7 @@ export default function HeroesImage() {
             </Link>
           </div>
         </div>
+
         {/* right area banner */}
         <div className="w-1/2">
           <Image
