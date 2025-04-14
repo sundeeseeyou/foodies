@@ -22,7 +22,7 @@ export default function HeaderFoodies() {
                 <NavLink href="/meals">Browse Meals</NavLink>
               </li>
               <li>
-                <NavLink href="/community">Browse Meals</NavLink>
+                <NavLink href="/community">Browse Community</NavLink>
               </li>
             </ul>
           </nav>

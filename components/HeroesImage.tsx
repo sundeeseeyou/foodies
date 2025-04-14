@@ -1,5 +1,4 @@
 import { Button } from "@headlessui/react";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { MdFastfood } from "react-icons/md";
 import { BsPeopleFill } from "react-icons/bs";
 import bannerImage from "../public/salad-bowl.jpg";
