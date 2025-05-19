@@ -1,13 +1,18 @@
-// export default function MealsGrid({
-//   foods,
-// }: Readonly<{
-//   foods: string;
-// }>) {
-//   return (
-//     <ul>
-//       {foods.map(food: string => (
-//         <li key={food.id}></li>
-//       ))}
-//     </ul>
-//   );
-// }
+import MealsItem from "./MealsItem";
+import { RecipeCard } from "./MealsItem";
+
+export default function MealsGrid({
+  foods,
+}: Readonly<{
+  foods: RecipeCard[];
+}>) {
+  return (
+    <ul>
+      {foods.map((item) => (
+        <li key={item.slug}>
+          <MealsItem {...item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
