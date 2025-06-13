@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Nunito_Sans, Fira_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderFoodies from "@/../components/HeaderFoodies";
