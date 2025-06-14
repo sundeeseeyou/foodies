@@ -3,5 +3,9 @@ export default function SectionText({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="w-[100%] h-auto">{children}</div>;
+  return (
+    <div className="flex flex-col items-stretch w-[100%] h-auto">
+      {children}
+    </div>
+  );
 }
