@@ -1,13 +1,16 @@
 import MealsItem from "./MealsItem";
-import { RecipeCard } from "./MealsItem";
 
-export default function MealsGrid({
-  foods,
-}: Readonly<{
-  foods: RecipeCard[];
-}>) {
+export type RecipeCard = {
+  title: string;
+  slug: string;
+  image: string;
+  summary: string;
+  user: string;
+};
+
+export default function MealsGrid({ foods }: { foods: RecipeCard[] }) {
   return (
-    <ul>
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {foods.map((item) => (
         <li key={item.slug}>
           <MealsItem {...item} />

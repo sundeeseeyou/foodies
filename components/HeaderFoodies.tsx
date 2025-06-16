@@ -6,8 +6,8 @@ import NavLink from "./NavLink";
 export default function HeaderFoodies() {
   return (
     <>
-      <header className="flex flex-row w-full bg-white shadow justify-center fixed items-center max-h-[5rem]">
-        <div className="w-[1440px] flex flex-row justify-between items-center py-4">
+      <header className="flex flex-row w-full bg-white shadow justify-center items-center max-h-[5rem]">
+        <div className="flex flex-row justify-between items-center py-4 w-full max-w-screen-2xl mx-auto">
           <Link href="/">
             <Image
               src={foodies}

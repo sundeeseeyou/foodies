@@ -1,19 +1,44 @@
-import HeadingText from "../../../components/HeadingText";
-import { Button } from "@headlessui/react";
+import MealsGrid from "../../../components/MealsGrid";
+import pool from "../../../lib/db";
 import Link from "next/link";
 import { IoIosShareAlt } from "react-icons/io";
 
-export default function MealsPage() {
+export default async function MealsPage() {
+  const result = await pool.query<{
+    slug: string;
+    title: string;
+    image: string;
+    summary: string;
+    creator: string;
+  }>("SELECT slug, title, image, summary, creator FROM meals ORDER BY id");
+
+  const meals = result.rows.map((row) => ({
+    slug: row.slug,
+    title: row.title,
+    image: row.image,
+    summary: row.summary,
+    user: row.creator,
+  }));
+
   return (
-    <main className="flex flex-col items-start min-w-96 justify-center gap-2 min-h-full px-4 py-16 w-[1440px]">
-      <h1>Find your favorite meals</h1>
-      <p>We offer amazing cuisine for you from different nations</p>
-      <Link href={`/share`}>
-        <Button className="flex items-center gap-2 rounded-4xl bg-black text-white py-4 px-12 text-sm hover:bg-gray-700 active:bg-gray-700 hover:cursor-pointer">
+    <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold">Find your favorite meals</h1>
+          <p className="text-gray-500">
+            We offer amazing cuisine from different nations.
+          </p>
+        </div>
+        <Link
+          href="/share"
+          className="flex items-center gap-2 rounded-full bg-black text-white py-2 px-6 text-sm hover:bg-gray-700 active:bg-gray-700"
+        >
           <IoIosShareAlt />
           Share
-        </Button>
-      </Link>
+        </Link>
+      </div>
+
+      <MealsGrid foods={meals} />
     </main>
   );
 }
