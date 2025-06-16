@@ -23,15 +23,15 @@ export default async function MealsPage() {
   return (
     <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold">Find your favorite meals</h1>
+        <div className="flex flex-col gap-4">
+          <h1 className="text-5xl font-bold">Find your favorite meals</h1>
           <p className="text-gray-500">
             We offer amazing cuisine from different nations.
           </p>
         </div>
         <Link
           href="/share"
-          className="flex items-center gap-2 rounded-full bg-black text-white py-2 px-6 text-sm hover:bg-gray-700 active:bg-gray-700"
+          className="flex items-center text-xl gap-2 rounded-full bg-green-700 text-white py-2 px-8 hover:opacity-80 active:bg-gray-700"
         >
           <IoIosShareAlt />
           Share

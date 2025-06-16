@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8f8f8;
   --foreground: #171717;
 }
 
@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --background: #030303;
-    --foreground: #fdfdfd;
+    --foreground: #f8f8f8;
   }
 }
 
@@ -26,19 +26,4 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: #030303;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5;
 }

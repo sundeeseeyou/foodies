@@ -10,8 +10,8 @@ export default function MealsItem({
   user,
 }: RecipeCard) {
   return (
-    <section className="flex flex-col justify-start p-6 bg-white shadow-md rounded-xl overflow-hidden">
-      <div className="relative w-full h-48 mb-4">
+    <section className="flex flex-col justify-start min-h-96 bg-white shadow-md rounded-xl overflow-hidden">
+      <div className="relative w-full h-64 mb-2">
         <Image
           src={image}
           alt={title}
@@ -21,13 +21,13 @@ export default function MealsItem({
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <h4 className="text-lg font-semibold">{title}</h4>
-        <p className="text-sm text-gray-600">By {user}</p>
-        <p className="text-sm text-gray-800">{summary}</p>
+      <div className="flex flex-col p-8 gap-2">
+        <h4 className="text-2xl font-semibold">{title}</h4>
+        <p className="text-xs text-gray-400">By {user}</p>
+        <p className="text-md text-gray-800">{summary}</p>
         <Link
           href={`/meals/${slug}`}
-          className="mt-4 inline-block text-sm font-medium text-blue-600 hover:underline"
+          className="w-42 mt-4 rounded-full text-center px-4 py-2 font-sm bg-green-700 text-white hover:opacity-70"
         >
           See the recipe →
         </Link>
