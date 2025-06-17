@@ -1,9 +1,37 @@
 import MealsGrid from "../../../components/MealsGrid";
+import { Suspense } from "react";
 import pool from "../../../lib/db";
 import Link from "next/link";
 import { IoIosShareAlt } from "react-icons/io";
+import Loading from "./FoodLoading";
 
-export default async function MealsPage() {
+// This is the main page for meals, which fetches data from the database and displays it.
+// It uses server-side rendering to fetch the meals data and display it in a grid format.
+
+async function Meals() {
+  async function Meals() {
+    // Artificial delay: 2 seconds
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    const result = await pool.query<{
+      slug: string;
+      title: string;
+      image: string;
+      summary: string;
+      creator: string;
+    }>("SELECT slug, title, image, summary, creator FROM meals ORDER BY id");
+
+    const meals = result.rows.map((row) => ({
+      slug: row.slug,
+      title: row.title,
+      image: row.image,
+      summary: row.summary,
+      user: row.creator,
+    }));
+
+    return <MealsGrid foods={meals} />;
+  }
+
   const result = await pool.query<{
     slug: string;
     title: string;
@@ -20,6 +48,10 @@ export default async function MealsPage() {
     user: row.creator,
   }));
 
+  return <MealsGrid foods={meals} />;
+}
+
+export default async function MealsPage() {
   return (
     <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="flex justify-between items-center">
@@ -37,8 +69,11 @@ export default async function MealsPage() {
           Share
         </Link>
       </div>
-
-      <MealsGrid foods={meals} />
+      <section className="food-grid">
+        <Suspense fallback={<Loading />}>
+          <Meals />
+        </Suspense>
+      </section>
     </main>
   );
 }
