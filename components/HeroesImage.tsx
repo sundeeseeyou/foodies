@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function HeroesImage() {
   return (
     <>
-      <div className="flex flex-row justify-between gap-8 w-[1440px] bg-lime-900 h-auto rounded-4xl p-16 mt-8 min-h-128">
+      <div className="flex flex-row justify-between gap-8 w-full min-w-fit bg-lime-900 h-auto rounded-4xl p-16 min-h-128">
         {/* left area banner */}
         <div className="flex flex-col justify-center gap-4 items-start font-bold text-white w-1/2">
           <h1 className="text-6xl">Best Veggie Food in Jakarta</h1>
