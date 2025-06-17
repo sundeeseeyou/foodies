@@ -9,28 +9,8 @@ import Loading from "./FoodLoading";
 // It uses server-side rendering to fetch the meals data and display it in a grid format.
 
 async function Meals() {
-  async function Meals() {
-    // Artificial delay: 2 seconds
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    const result = await pool.query<{
-      slug: string;
-      title: string;
-      image: string;
-      summary: string;
-      creator: string;
-    }>("SELECT slug, title, image, summary, creator FROM meals ORDER BY id");
-
-    const meals = result.rows.map((row) => ({
-      slug: row.slug,
-      title: row.title,
-      image: row.image,
-      summary: row.summary,
-      user: row.creator,
-    }));
-
-    return <MealsGrid foods={meals} />;
-  }
+  // Artificial delay: 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const result = await pool.query<{
     slug: string;
