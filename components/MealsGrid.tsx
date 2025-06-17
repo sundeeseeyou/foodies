@@ -1,12 +1,5 @@
 import MealsItem from "./MealsItem";
-
-export type RecipeCard = {
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  user: string;
-};
+import { RecipeCard } from "./types";
 
 export default function MealsGrid({ foods }: { foods: RecipeCard[] }) {
   return (
