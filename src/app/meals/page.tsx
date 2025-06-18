@@ -10,7 +10,7 @@ import Loading from "./FoodLoading";
 
 async function Meals() {
   // Artificial delay: 2 seconds
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const result = await pool.query<{
     slug: string;
