@@ -12,6 +12,9 @@ async function Meals() {
   // Artificial delay: 2 seconds
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
+  //Artificial error to try error handling
+  // throw new Error("Unable to load data");
+
   const result = await pool.query<{
     slug: string;
     title: string;
