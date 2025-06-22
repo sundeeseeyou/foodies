@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Nunito_Sans, Fira_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderFoodies from "@/../components/HeaderFoodies";
+import Footer from "../../components/Footer";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -28,10 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col items-center font-[family-name:var(--font-nunito-sans)] antialiased`}
+        className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col h-screen max-h-screen-xl mx-auto items-center font-[family-name:var(--font-nunito-sans)] antialiased`}
       >
         <HeaderFoodies />
         {children}
+        <Footer />
       </body>
     </html>
   );

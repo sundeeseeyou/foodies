@@ -31,12 +31,14 @@ async function Meals() {
     user: row.creator,
   }));
 
+  console.log({ meals });
+
   return <MealsGrid foods={meals} />;
 }
 
 export default async function MealsPage() {
   return (
-    <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
+    <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-xl mx-auto">
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl font-bold">Find your favorite meals</h1>
@@ -52,7 +54,7 @@ export default async function MealsPage() {
           Share
         </Link>
       </div>
-      <section className="food-grid">
+      <section className="food-grid mt-8">
         <Suspense fallback={<Loading />}>
           <Meals />
         </Suspense>
