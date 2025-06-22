@@ -1,24 +1,19 @@
-// import pool from "../../../lib/db";
-import SingleRecipe from "../../../../components/SingleRecipe";
-import { RecipeCard } from "../../../../components/types";
+import Image from "next/image";
+import pool from "../../../../lib/db";
 
-export default function RecipeMeals({ foods }: { foods: RecipeCard[] }) {
-  const [title, name, test, tost] = foods;
-
+export default function SinglePageRecipe() {
   return (
-    <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-5xl font-bold">
-            <SingleRecipe>
-              {title}
-              {name}
-              {test}
-              {tost}
-            </SingleRecipe>
-          </h1>
-        </div>
-      </div>
+    <main className="flex flex-col justify-center items-center gap-8 px-4 py-16 w-full max-w-screen-2xl mx-auto">
+      <section className="flex justify-around min-w-full p-4">
+        <Image src={``} alt={``} fill />
+        <header>
+          <h1 className="text-5xl text-green-700 font-bold">TITLE</h1>
+          <p>By Creator</p>
+        </header>
+      </section>
+      <section>
+        <p>Instruction</p>
+      </section>
     </main>
   );
 }
