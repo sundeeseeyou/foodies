@@ -31,8 +31,6 @@ async function Meals() {
     user: row.creator,
   }));
 
-  console.log({ meals });
-
   return <MealsGrid foods={meals} />;
 }
 
