@@ -2,7 +2,7 @@ import MealsGrid from "../../../components/MealsGrid";
 import { Suspense } from "react";
 import pool from "../../../lib/db";
 import Link from "next/link";
-import { IoIosShareAlt } from "react-icons/io";
+import { IoIosAddCircle } from "react-icons/io";
 import Loading from "./FoodLoading";
 
 // This is the main page for meals, which fetches data from the database and displays it.
@@ -37,7 +37,7 @@ async function Meals() {
 export default async function MealsPage() {
   return (
     <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-xl mx-auto">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start">
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl font-bold">Find your favorite meals</h1>
           <p className="text-gray-500">
@@ -48,8 +48,8 @@ export default async function MealsPage() {
           href="/share"
           className="flex items-center text-xl gap-2 rounded-full bg-green-700 text-white py-2 px-8 hover:opacity-80 active:bg-gray-700"
         >
-          <IoIosShareAlt />
-          Share
+          <IoIosAddCircle />
+          New Recipe
         </Link>
       </div>
       <section className="food-grid mt-8">
