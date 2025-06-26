@@ -45,7 +45,7 @@ export default async function MealsPage() {
           </p>
         </div>
         <Link
-          href="/share"
+          href={`meals/share`}
           className="flex items-center text-xl gap-2 rounded-full bg-green-700 text-white py-2 px-8 hover:opacity-80 active:bg-gray-700"
         >
           <IoIosAddCircle />

@@ -33,7 +33,7 @@ export default async function SinglePageRecipe({ params }: Props) {
           src={recipe.image}
           alt={recipe.title}
           fill
-          className="object-cover rounded-2xl border-1 border-gray-400"
+          className="object-cover rounded-4xl border-1 border-gray-400"
           sizes="(max-width: 768px) 100%, 50vw"
         />
       </section>
@@ -55,7 +55,7 @@ export default async function SinglePageRecipe({ params }: Props) {
           </p>
         </header>
         <h2 className="text-2xl text-gray-800 font-semibold">Instructions</h2>
-        <div className=" border-gray-500 min-w-full max-h-fit p-4 bg-gray-200 rounded-xl">
+        <div className=" border-gray-500 min-w-full max-h-fit p-8 bg-gray-200 rounded-xl">
           <div
             className="text-lg"
             dangerouslySetInnerHTML={{
