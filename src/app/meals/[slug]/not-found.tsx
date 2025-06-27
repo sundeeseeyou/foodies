@@ -1,5 +1,6 @@
 "use client";
 import { TbError404 } from "react-icons/tb";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -7,6 +8,9 @@ export default function NotFound() {
       <TbError404 className="text-red-600 text-6xl" />
       <h1 className="text-6xl text-black font-bold">RECIPE IS NOT FOUND</h1>
       <p>Oops. Please try another query.</p>
+      <Link href={".."} target="blank">
+        Back
+      </Link>
     </main>
   );
 }
