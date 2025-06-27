@@ -8,7 +8,7 @@ export default function NotFound() {
       <TbError404 className="text-red-600 text-6xl" />
       <h1 className="text-6xl text-black font-bold">RECIPE IS NOT FOUND</h1>
       <p>Oops. Please try another query.</p>
-      <Link href={".."} target="blank">
+      <Link href={".."} className="text-gray-600 text-sm hover:underline">
         Back
       </Link>
     </main>
