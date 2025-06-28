@@ -1,6 +1,6 @@
 "use client";
-import { TbError404 } from "react-icons/tb";
 import Link from "next/link";
+import { TbError404 } from "react-icons/tb";
 
 export default function NotFound() {
   return (

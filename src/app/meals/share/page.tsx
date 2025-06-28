@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import sideImage from "../../../../public/images/homecooking.jpg";
 
 export default function NewRecipe() {
   return (
@@ -93,8 +95,17 @@ export default function NewRecipe() {
           </button>
         </fieldset>
       </form>
+      <section className="relative w-2/5">
+        <Image
+          src={sideImage}
+          alt="side image"
+          fill
+          className="object-cover rounded-4xl border-1 border-gray-400"
+          sizes="(max-width: 768px) 100%, full"
+        />
+      </section>
 
-      <article className="flex flex-col bg-green-700 rounded-xl w-2/5"></article>
+      {/* <article className="flex flex-col bg-green-700 rounded-xl w-2/5"></article> */}
     </main>
   );
 }
