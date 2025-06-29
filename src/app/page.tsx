@@ -6,6 +6,9 @@ export default function Home() {
     <main className="flex flex-col justify-start gap-8 px-4 py-6 w-full max-w-screen-xl mx-auto">
       <HeroesImage />
       <SectionFeatures></SectionFeatures>
+      <SectionFeatures></SectionFeatures>
+      <SectionFeatures></SectionFeatures>
+      <SectionFeatures></SectionFeatures>
     </main>
   );
 }

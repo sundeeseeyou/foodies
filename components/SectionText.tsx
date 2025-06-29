@@ -4,7 +4,7 @@ export default function SectionText({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col items-stretch w-[100%] h-auto">
+    <div className="flex flex-col items-stretch w-[100%] h-auto gap-4">
       {children}
     </div>
   );
