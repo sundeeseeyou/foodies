@@ -1,14 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
+import { LinkType } from "./types";
 
-interface LinkProps {
-  href: string;
-  children: ReactNode;
-}
-
-export default function NavLink({ href, children }: LinkProps) {
+export default function NavLink({ href, children }: LinkType) {
   const path = usePathname();
   return (
     <Link

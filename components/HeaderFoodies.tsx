@@ -19,10 +19,10 @@ export default function HeaderFoodies() {
           <nav className="hidden sm:block">
             <ul className="flex flex-row gap-8">
               <li>
-                <NavLink href="/meals">Browse Meals</NavLink>
+                <NavLink href="/meals"> Browse Meals</NavLink>
               </li>
               <li>
-                <NavLink href="/community">Browse Community</NavLink>
+                <NavLink href="/community"> Browse Community</NavLink>
               </li>
             </ul>
           </nav>

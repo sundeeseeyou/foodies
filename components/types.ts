@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type RecipeCard = {
   title: string;
   slug: string;
@@ -5,3 +7,8 @@ export type RecipeCard = {
   summary: string;
   user: string;
 };
+
+export interface headingSet {
+  heading: string;
+  children: ReactNode;
+}
