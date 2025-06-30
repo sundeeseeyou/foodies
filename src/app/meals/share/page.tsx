@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import sideImage from "../../../../public/images/homecooking.jpg";
+import ImagePicker from "../../../../components/ImagePicker";
 
 export default function NewRecipe() {
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
       <form className="flex flex-col w-3/5 gap-4 mx-auto">
-        <fieldset className="border-1 border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
+        <fieldset className="border border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
           <legend className="text-xl px-4">Your Identity</legend>
           <section className="grid lg:grid-cols-2 gap-4">
             <div>
@@ -41,12 +42,12 @@ export default function NewRecipe() {
             </div>
           </section>
         </fieldset>
-        <fieldset className="border-1 border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
+        <fieldset className="border border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
           <legend className="text-xl px-4">Your Recipe Details</legend>
           <section className="flex flex-col gap-4">
             <div>
               <label
-                htmlFor="recipe"
+                htmlFor="recipe-title"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Recipe Name
@@ -86,6 +87,8 @@ export default function NewRecipe() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Write down your instruction here..."
             ></textarea>
+
+            <ImagePicker label="Upload your food" name="image" />
           </section>
           <button
             type="submit"
@@ -100,8 +103,8 @@ export default function NewRecipe() {
           src={sideImage}
           alt="side image"
           fill
-          className="object-cover rounded-4xl border-1 border-gray-400"
-          sizes="(max-width: 768px) 100%, full"
+          className="object-cover rounded-3xl border border-gray-400"
+          sizes="(max-width: 768px) 100%, 50vw"
         />
       </section>
 

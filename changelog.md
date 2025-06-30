@@ -1,5 +1,12 @@
 # Changelog Foodies Recipe Project
 
+## [1.0.2] - 2025-07-01
+
+### Added
+
+- Add "New Recipe" button so user can create their own recipe
+- Add not found inside [slug] folder so if the recipe doesnt exist, it will fallback to the not found page specifically
+
 ## [1.0.1] - 2025-06-18
 
 ### Added
