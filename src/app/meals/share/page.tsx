@@ -4,7 +4,7 @@ import sideImage from "../../../../public/images/homecooking.jpg";
 import ImagePicker from "../../../components/ImagePicker";
 
 export default function NewRecipe() {
-  const addMeal = async (formData) => {
+  const addMeal = async (formData: FormData) => {
     "use server";
 
     const recipe = {
@@ -12,9 +12,11 @@ export default function NewRecipe() {
       summary: formData.get("summary"),
       instructions: formData.get("instructions"),
       image: formData.get("image"),
-      creator: formData.get("name")
-      creator_email: formData.get("email")
+      creator: formData.get("name"),
+      creator_email: formData.get("email"),
     };
+
+    console.log(recipe);
   };
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
