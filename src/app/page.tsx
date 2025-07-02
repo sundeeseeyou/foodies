@@ -1,5 +1,5 @@
-import HeroesImage from "../../components/HeroesImage";
-import SectionFeatures from "../../components/SectionFeaturesLeft";
+import HeroesImage from "../components/HeroesImage";
+import SectionFeatures from "../components/SectionFeaturesLeft";
 
 export default function Home() {
   return (

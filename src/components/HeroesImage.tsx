@@ -1,7 +1,6 @@
 import { Button } from "@headlessui/react";
 import { MdFastfood } from "react-icons/md";
 import { BsPeopleFill } from "react-icons/bs";
-import bannerImage from "../public/salad-bowl.jpg";
 import Image from "next/image";
 import Link from "next/link";
 export default function HeroesImage() {
@@ -10,7 +9,7 @@ export default function HeroesImage() {
       <div className="flex flex-row justify-between gap-8 w-full min-w-fit bg-lime-900 h-auto rounded-4xl p-16 min-h-128">
         {/* left area banner */}
         <div className="flex flex-col justify-center gap-4 items-start font-bold text-white w-1/2">
-          <h1 className="text-6xl/snug">Best Veggie Food in Jakarta</h1>
+          <h1 className="text-6xl/tight">Best Veggie Food in Jakarta</h1>
           <p className="text-md font-light">
             You won't believe you have some greens
           </p>
@@ -31,12 +30,12 @@ export default function HeroesImage() {
         </div>
 
         {/* right area banner */}
-        <div className="w-1/2">
+        <div className="relative w-1/2 aspect-[16/9]">
           <Image
-            src={bannerImage}
+            src="/salad-bowl.jpg"
             alt="vegetable banner"
-            className="object-contain min-w-128 rounded-4xl"
-            priority
+            fill
+            className="rounded-lg object-cover"
           />
         </div>
       </div>

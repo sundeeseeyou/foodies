@@ -16,6 +16,7 @@ export default function ImagePicker({ label, name }: Strings) {
     const file = e.target.files?.[0];
 
     if (!file) {
+      setPickImage(null);
       return;
     }
 
@@ -34,7 +35,7 @@ export default function ImagePicker({ label, name }: Strings) {
         <label htmlFor={name}>{label}</label>
         {/* the label is clickable, i will comment it out first */}
         {/* <span>{label}</span> */}
-        <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-4">
           <input
             type="file"
             id={name}
@@ -43,9 +44,10 @@ export default function ImagePicker({ label, name }: Strings) {
             ref={imageInput}
             onChange={imageHandlerChange}
             hidden
+            required
           />
 
-          <div className="relative aspect-square border shadow-md rounded-md w-32 overflow-hidden text-center">
+          <div className="relative flex flex-col justify-center items-center text-sm/tight aspect-square border shadow-md rounded-md w-32 overflow-hidden text-center">
             {!pickImage && <p className="p-4">Please pick an image.</p>}
             {pickImage && (
               <Image

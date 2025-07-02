@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import sideImage from "../../../../public/images/homecooking.jpg";
-import ImagePicker from "../../../../components/ImagePicker";
+import ImagePicker from "../../../components/ImagePicker";
 
 export default function NewRecipe() {
   return (
@@ -90,13 +90,13 @@ export default function NewRecipe() {
 
             <ImagePicker label="Upload your food" name="image" />
           </section>
-          <button
-            type="submit"
-            className="block text-xl mt-8 w-1/3 hover:cursor-pointer rounded-full bg-green-700 text-white py-2 px-8 hover:opacity-80"
-          >
-            Submit
-          </button>
         </fieldset>
+        <button
+          type="submit"
+          className="block self-end text-xl mt-4 w-1/3 hover:cursor-pointer rounded-full bg-green-700 text-white py-4 px-12 hover:opacity-80"
+        >
+          Submit
+        </button>
       </form>
       <section className="relative w-2/5">
         <Image

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito_Sans, Fira_Mono } from "next/font/google";
 import "./globals.css";
-import HeaderFoodies from "@/../components/HeaderFoodies";
-import Footer from "../../components/Footer";
+import HeaderFoodies from "@/components/HeaderFoodies";
+import Footer from "../components/Footer";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",

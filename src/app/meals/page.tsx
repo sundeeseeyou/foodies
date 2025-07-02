@@ -1,6 +1,6 @@
-import MealsGrid from "../../../components/MealsGrid";
+import MealsGrid from "../../components/MealsGrid";
 import { Suspense } from "react";
-import pool from "../../../lib/db";
+import pool from "../../lib/db";
 import Link from "next/link";
 import { IoIosAddCircle } from "react-icons/io";
 import Loading from "./FoodLoading";

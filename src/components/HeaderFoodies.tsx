@@ -1,5 +1,5 @@
 import Image from "next/image";
-import foodies from "../public/foodies.webp";
+import foodies from "../../public/foodies.webp";
 import Link from "next/link";
 import NavLink from "./NavLink";
 
