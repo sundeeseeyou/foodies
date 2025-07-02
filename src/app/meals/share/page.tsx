@@ -4,9 +4,21 @@ import sideImage from "../../../../public/images/homecooking.jpg";
 import ImagePicker from "../../../components/ImagePicker";
 
 export default function NewRecipe() {
+  const addMeal = async (formData) => {
+    "use server";
+
+    const recipe = {
+      title: formData.get("title"),
+      summary: formData.get("summary"),
+      instructions: formData.get("instructions"),
+      image: formData.get("image"),
+      creator: formData.get("name")
+      creator_email: formData.get("email")
+    };
+  };
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
-      <form className="flex flex-col w-3/5 gap-4 mx-auto">
+      <form className="flex flex-col w-3/5 gap-4 mx-auto" action={addMeal}>
         <fieldset className="border border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
           <legend className="text-xl px-4">Your Identity</legend>
           <section className="grid lg:grid-cols-2 gap-4">
@@ -22,6 +34,7 @@ export default function NewRecipe() {
                 id="fullname"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="John Doe"
+                name="name"
                 required
               />
             </div>
@@ -35,6 +48,7 @@ export default function NewRecipe() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="you@example.com"
                 required
@@ -57,6 +71,7 @@ export default function NewRecipe() {
                 id="recipe-title"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Recipe Name"
+                name="title"
                 required
               />
             </div>
@@ -70,19 +85,21 @@ export default function NewRecipe() {
               <input
                 type="text"
                 id="summary"
+                name="summary"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="The best food in town ..."
                 required
               />
             </div>
             <label
-              htmlFor="message"
+              htmlFor="instructions"
               className="block text-sm font-medium text-gray-900"
             >
               Cook Instructions
             </label>
             <textarea
-              id="message"
+              id="instructions"
+              name="instructions"
               rows={4}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Write down your instruction here..."
