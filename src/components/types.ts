@@ -40,3 +40,9 @@ export type Recipe = {
   creator: string;
   creator_email: string;
 };
+
+export type ToastProps = {
+  message: string;
+  onClose: () => void;
+  duration: number;
+};
