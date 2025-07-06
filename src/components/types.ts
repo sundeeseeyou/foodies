@@ -8,7 +8,17 @@ export type RecipeCard = {
   user: string;
 };
 
-export interface headingSet {
-  heading: string;
+export interface StringType {
+  string: string;
   children: ReactNode;
+}
+
+export type LinkType = {
+  href: string;
+  children: ReactNode;
+}
+
+export type Strings = {
+  label: string;
+  name: string;
 }

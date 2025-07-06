@@ -6,7 +6,7 @@ export default function SectionFeaturesLeft() {
   return (
     <section className="flex flex-col justify-center items-center w-full h-auto">
       <div className="flex flex-row justify-between items-center max-w-screen-xl my-8 min-h-64 gap-16 rounded-xl ">
-        <SectionImage url="/assets/delivery.jpg" alt="delivery guy" />
+        <SectionImage url="/delivery.jpg" alt="delivery guy" />
         <SectionText>
           <h2 className="text-4xl text-gray-700 font-bold">
             Hidup tak mau rugi

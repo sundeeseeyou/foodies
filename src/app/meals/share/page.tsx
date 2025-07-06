@@ -1,23 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import sideImage from "../../../../public/images/homecooking.jpg";
 import ImagePicker from "../../../components/ImagePicker";
+import { addMeal } from "@/lib/_meals";
 
 export default function NewRecipe() {
-  const addMeal = async (formData: FormData) => {
-    "use server";
-
-    const recipe = {
-      title: formData.get("title"),
-      summary: formData.get("summary"),
-      instructions: formData.get("instructions"),
-      image: formData.get("image"),
-      creator: formData.get("name"),
-      creator_email: formData.get("email"),
-    };
-
-    console.log(recipe);
-  };
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
       <form className="flex flex-col w-3/5 gap-4 mx-auto" action={addMeal}>
@@ -112,7 +98,7 @@ export default function NewRecipe() {
         </fieldset>
         <button
           type="submit"
-          className="block self-end text-xl mt-4 w-1/3 hover:cursor-pointer rounded-full bg-green-700 text-white py-4 px-12 hover:opacity-80"
+          className="block self-end text-xl mt-4 w-auto hover:cursor-pointer rounded-full bg-green-700 text-white py-3 px-12 hover:opacity-80"
         >
           Submit
         </button>
