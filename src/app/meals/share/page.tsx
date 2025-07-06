@@ -1,12 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import sideImage from "../../../../public/images/homecooking.jpg";
 import ImagePicker from "../../../components/ImagePicker";
 import { addMeal } from "@/lib/_meals";
+import { useState } from "react";
+import ToastBox from "@/components/ToastBox";
 
 export default function NewRecipe() {
+  const [showToast, setShowToast] = useState(false);
+
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
-      <form className="flex flex-col w-3/5 gap-4 mx-auto" action={addMeal}>
+      {showToast && (
+        <ToastBox
+          message="Upload Success"
+          onClose={() => setShowToast(false)}
+          duration={2000}
+        />
+      )}
+      <form
+        className="flex flex-col w-3/5 gap-4 mx-auto"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+          await addMeal(formData);
+          setShowToast(true);
+          setTimeout(() => {
+            window.location.href = "/meals";
+          }, 2000);
+        }}
+      >
         <fieldset className="border border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
           <legend className="text-xl px-4">Your Identity</legend>
           <section className="grid lg:grid-cols-2 gap-4">
