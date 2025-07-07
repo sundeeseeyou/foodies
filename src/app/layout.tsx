@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Fira_Mono } from "next/font/google";
+// import { Nunito_Sans, Fira_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderFoodies from "@/components/HeaderFoodies";
 import Footer from "../components/Footer";
 
-const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito-sans",
-  subsets: ["latin"],
-});
+// const nunitoSans = Nunito_Sans({
+//   variable: "--font-nunito-sans",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
-const firaMono = Fira_Mono({
-  variable: "--font-fira-mono",
-  subsets: ["latin"],
-  weight: "400",
-});
+// const firaMono = Fira_Mono({
+//   variable: "--font-fira-mono",
+//   subsets: ["latin"],
+//   weight: "400",
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "Food Network",
@@ -27,9 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      {/* <body
         className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col h-full min-h-screen mx-auto items-center font-[family-name:var(--font-nunito-sans)] antialiased`}
-      >
+      > */}
+      <body className="flex flex-col h-full min-h-screen mx-auto items-center antialiased">
         <HeaderFoodies />
         {children}
         <Footer />
