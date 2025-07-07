@@ -32,7 +32,7 @@ export default function RootLayout({
       {/* <body
         className={`${nunitoSans.variable} ${firaMono.variable} flex flex-col h-full min-h-screen mx-auto items-center font-[family-name:var(--font-nunito-sans)] antialiased`}
       > */}
-      <body className="flex flex-col h-full min-h-screen mx-auto items-center antialiased">
+      <body className="flex flex-col h-full min-h-screen mx-auto items-center antialiased font-display ">
         <HeaderFoodies />
         {children}
         <Footer />

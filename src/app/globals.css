@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #f8f8f8;
   --foreground: #171717;
-  --font-sans: var(--font-nunito-sans);
-  --font-mono: var(--font-fira-mono);
+  /* --font-sans: var(--font-nunito-sans);
+  --font-mono: var(--font-fira-mono); */
 }
 
 @media (prefers-color-scheme: light) {
@@ -12,6 +13,10 @@
     --background: #030303;
     --foreground: #f8f8f8;
   }
+}
+
+@theme {
+  --font-display: "Manrope", "sans-serif";
 }
 
 html {
