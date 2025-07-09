@@ -1,5 +1,12 @@
 # Changelog Foodies Recipe Project
 
+## [1.1.1] - 2025-07-09
+
+### Added
+
+- Add Main Features section with random images
+- Add pending useFormStatus on button, so it will change in a glance, during sending the data
+
 ## [1.1.0] - 2025-07-06
 
 ### Added
