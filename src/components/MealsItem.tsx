@@ -10,7 +10,7 @@ export default function MealsItem({
   user,
 }: RecipeCard) {
   return (
-    <section className="flex flex-col justify-start min-h-96 bg-white shadow-md rounded-xl overflow-hidden">
+    <section className="flex flex-col justify-start h-full bg-white shadow-md rounded-xl overflow-hidden">
       <div className="relative w-full h-64 mb-2">
         <Image
           src={image}

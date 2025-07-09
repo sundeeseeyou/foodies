@@ -6,9 +6,11 @@ import ImagePicker from "../../../components/ImagePicker";
 import { addMeal } from "@/lib/_meals";
 import { useState } from "react";
 import ToastBox from "@/components/ToastBox";
+import { useFormStatus } from "react-dom";
 
 export default function NewRecipe() {
   const [showToast, setShowToast] = useState(false);
+  const { pending } = useFormStatus();
 
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
@@ -122,9 +124,10 @@ export default function NewRecipe() {
         </fieldset>
         <button
           type="submit"
-          className="block self-end text-xl mt-4 w-auto hover:cursor-pointer rounded-full bg-green-700 text-white py-3 px-12 hover:opacity-80"
+          className="block self-end text-xl mt-4 w-auto hover:cursor-pointer rounded-full bg-green-700 text-white py-3 px-12 hover:opacity-80 active:bg-green-400"
+          disabled={pending}
         >
-          Submit
+          {pending ? "Submitting ..." : "Submit"}
         </button>
       </form>
       <section className="relative w-2/5">

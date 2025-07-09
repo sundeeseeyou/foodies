@@ -22,7 +22,7 @@ export default async function MealsPage() {
           New Recipe
         </Link>
       </div>
-      <section className="food-grid mt-8">
+      <section className="mt-8">
         <Suspense fallback={<Loading />}>
           <Meals />
         </Suspense>
