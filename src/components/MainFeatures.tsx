@@ -1,29 +1,8 @@
-import { BsCloudArrowUp, BsLockFill, BsDatabaseCheck } from "react-icons/bs";
-
-const features = [
-  {
-    name: "Push to deploy.",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: BsCloudArrowUp,
-  },
-  {
-    name: "SSL certificates.",
-    description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: BsLockFill,
-  },
-  {
-    name: "Database backups.",
-    description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
-    icon: BsDatabaseCheck,
-  },
-];
+import { features } from "./postdata";
 
 export default function MainFeatures() {
   return (
-    <div className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-xl mx-auto overflow-hidden">
+    <div className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-xl mx-auto overflow-clip">
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         <div className="lg:pt-4 lg:pr-8">
           <div className="lg:max-w-lg">
@@ -60,7 +39,7 @@ export default function MainFeatures() {
           src="/cooking-main-features.jpg"
           width={2432}
           height={1442}
-          className="w-3xl max-w-none rounded-xl shadow-xl ring-1 ring-green-400/40 sm:w-228 md:-ml-4 lg:-ml-0"
+          className="w-4xl max-w-none rounded-xl ring-1 shadow-md sm:w-228 md:-ml-4 lg:-ml-0"
         />
       </div>
     </div>
