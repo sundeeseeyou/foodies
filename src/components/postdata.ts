@@ -35,4 +35,10 @@ export const MainFeatures = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
     icon: FaThumbsUp,
   },
+  {
+    heading: "Best place to hangout",
+    textarea:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+    icon: FaThumbsUp,
+  },
 ];
