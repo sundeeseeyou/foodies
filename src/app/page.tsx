@@ -10,6 +10,7 @@ export default function Home() {
       <MainFeatures></MainFeatures>
       <SectionFeatures></SectionFeatures>
       <SectionFeaturesRight></SectionFeaturesRight>
+      <SectionFeatures></SectionFeatures>
     </main>
   );
 }
