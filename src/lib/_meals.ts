@@ -5,6 +5,7 @@ import slugify from "slugify";
 import xss from "xss";
 import fs from "node:fs/promises";
 import { Meal, Recipe } from "@/components/types";
+import { mealSchema } from "./_meal-schema";
 
 export async function getMeals(): Promise<Meal[]> {
   const result = await pool.query<{
@@ -40,12 +41,26 @@ export async function addMeal(formData: FormData) {
     throw new Error("Please Upload an Image File");
   }
 
+  const rawData = {
+    title: formData.get("title")?.toString() ?? "",
+    summary: formData.get("summary")?.toString() ?? "",
+    instructions: formData.get("instructions")?.toString() ?? "",
+    creator: formData.get("name")?.toString() ?? "",
+    creator_email: formData.get("email")?.toString() ?? "",
+  };
+
+  //validating using zod
+  const parseResult = mealSchema.safeParse(rawData);
+
+  if (!parseResult.success) {
+    // Optionally: format or log errors
+    const errors = parseResult.error.flatten();
+    throw new Error("Validation failed: " + JSON.stringify(errors));
+  }
+
   const recipe = {
-    title: formData.get("title") as string,
-    summary: formData.get("summary") as string,
-    instructions: xss(formData.get("instructions") as string),
-    creator: formData.get("name") as string,
-    creator_email: formData.get("email") as string,
+    ...parseResult.data,
+    instructions: xss(parseResult.data.instructions),
   };
 
   const slug = slugify(recipe.title, { lower: true });
