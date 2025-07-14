@@ -17,7 +17,7 @@ export default function ToastBox({
   }, [duration, onClose]);
 
   return (
-    <div className="flex items-center border border-green-700 bg-green-100 text-green-800 p-4 rounded-lg shadow-sm fixed top-5 right-0 left-0 z-50">
+    <div className="flex items-center border border-green-700 max-w-64 bg-green-100 text-green-800 p-4 rounded-lg shadow-sm fixed top-5 z-50">
       <HiCheckCircle className="w-6 h-6 mr-3" />
       <div className="text-sm">{message}</div>
     </div>
