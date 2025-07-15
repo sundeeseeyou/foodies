@@ -1,5 +1,11 @@
 # Changelog Foodies Recipe Project
 
+## [1.1.2] - 2025-07-15
+
+### Added
+
+- Set maxlimit upload on next js from 1mb default to 5mb
+
 ## [1.1.1] - 2025-07-09
 
 ### Added
