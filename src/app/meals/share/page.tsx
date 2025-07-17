@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import sideImage from "../../../../public/images/homecooking.jpg";
-import ImagePicker from "../../../components/ImagePicker";
+import ImagePicker from "../../../components/Shares/ImagePicker";
 import { addMeal } from "@/lib/_meals";
 import { useState } from "react";
 import ToastBox from "@/components/ToastBox";

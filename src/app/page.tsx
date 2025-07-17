@@ -1,7 +1,7 @@
-import MainFeatures from "@/components/MainFeatures";
-import HeroesImage from "../components/HeroesImage";
-import SectionFeatures from "../components/SectionFeaturesLeft";
-import SectionFeaturesRight from "@/components/SectionFeatureRight";
+import MainFeatures from "@/components/homepage/MainFeatures";
+import HeroesImage from "../components/homepage/HeroesImage";
+import SectionFeatures from "../components/homepage/SectionFeaturesLeft";
+import SectionFeaturesRight from "@/components/homepage/SectionFeatureRight";
 
 export default function Home() {
   return (

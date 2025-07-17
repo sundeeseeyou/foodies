@@ -1,4 +1,4 @@
-import { features } from "./postdata";
+import { features } from "../postdata";
 
 export default function MainFeatures() {
   return (

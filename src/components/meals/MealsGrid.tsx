@@ -1,5 +1,5 @@
 import MealsItem from "./MealsItem";
-import { RecipeCard } from "./types";
+import { RecipeCard } from "../types";
 
 export default function MealsGrid({ foods }: { foods: RecipeCard[] }) {
   return (

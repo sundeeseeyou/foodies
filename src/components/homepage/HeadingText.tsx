@@ -1,6 +1,6 @@
 "use client";
 
-import { StringType } from "./types";
+import { StringType } from "../types";
 
 export default function HeadingText({ string, children }: StringType) {
   return (

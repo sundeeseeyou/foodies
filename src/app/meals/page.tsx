@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { IoIosAddCircle } from "react-icons/io";
-import Meals from "@/components/_Meals";
+import Meals from "@/components/meals/_Meals";
 import Loading from "./FoodLoading";
 
 export default async function MealsPage() {

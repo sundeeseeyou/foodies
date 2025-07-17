@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { Strings } from "./types";
+import { Strings } from "../types";
 import Image from "next/image";
 import { MdOutlineFileUpload } from "react-icons/md";
 
