@@ -42,11 +42,11 @@ export async function addMeal(formData: FormData) {
   }
 
   const rawData = {
-    title: formData.get("title")?.toString() ?? "",
-    summary: formData.get("summary")?.toString() ?? "",
-    instructions: formData.get("instructions")?.toString() ?? "",
-    creator: formData.get("name")?.toString() ?? "",
-    creator_email: formData.get("email")?.toString() ?? "",
+    title: formData.get("title")?.toString(),
+    summary: formData.get("summary")?.toString(),
+    instructions: formData.get("instructions")?.toString(),
+    creator: formData.get("name")?.toString(),
+    creator_email: formData.get("email")?.toString(),
   };
 
   //validating using zod
@@ -54,8 +54,6 @@ export async function addMeal(formData: FormData) {
 
   if (!result.success) {
     // Optionally: format or log errors
-    const errors = result.error.flatten();
-    throw new Error("Validation failed: " + JSON.stringify(errors));
   }
 
   const recipe = {
