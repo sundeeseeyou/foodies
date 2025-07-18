@@ -1,11 +1,9 @@
 import { z } from "zod";
 
-export const mealSchema = z.object({
-  title: z.string().min(3, "Title must be at least 3 characters."),
-  summary: z.string().min(20, "Summary must be at least 20 letters"),
-  instructions: z
-    .string()
-    .min(20, "Instructions must be at least 20 characters"),
-  creator: z.string().min(2, "Name is required"),
-  creator_email: z.string().email("Invalid email address"),
+export const formValidation = z.object({
+  title: z.string().min(5, "Title lenght minimum is 5 letters"),
+  summary: z.string().min(20, "You need to input at least 20 letters"),
+  instructions: z.string().min(20, "Too short"),
+  creator: z.string().min(2, "Limit fullname is 2 number"),
+  creator_email: z.email(),
 });

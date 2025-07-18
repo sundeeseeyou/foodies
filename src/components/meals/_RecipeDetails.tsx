@@ -1,7 +1,7 @@
 // src/app/meals/[slug]/_RecipeDetail.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { Recipe } from "@/lib/_meals";
+import { Recipe } from "../types";
 
 export default function RecipeDetail({ recipe }: { recipe: Recipe }) {
   return (
