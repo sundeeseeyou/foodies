@@ -1,10 +1,11 @@
 import { z } from "zod";
-import { ZodError } from "zod";
 
 export const formValidation = z.object({
-  title: z.string().min(5, "Title lenght minimum is 5 letters"),
-  summary: z.string().min(20, "You need to input at least 20 letters"),
-  instructions: z.string().min(20, "Too short"),
-  creator: z.string().min(2, "Limit fullname is 2 number"),
-  creator_email: z.email("It doesn't have @ symbol"),
+  title: z.string().min(5, "Title must be at least 5 characters"),
+  summary: z.string().min(20, "Summary must be at least 20 characters"),
+  instructions: z
+    .string()
+    .min(20, "Instructions must be at least 20 characters"),
+  creator: z.string().min(2, "Full name must be at least 2 characters"),
+  creator_email: z.email("Please enter a valid email address"),
 });

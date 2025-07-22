@@ -20,7 +20,7 @@ export default function SectionFeaturesRight() {
 
           <Link
             href="/community"
-            className="mt-4 w-1/3 gap-2 rounded-4xl font-bold bg-transparent text-gray-700 border-4 border-gray-700 py-4 px-12 text-center text-sm hover:bg-gray-700 hover:text-white active:bg-black hover:cursor-pointer"
+            className="mt-4 w-1/3 gap-2 rounded-full font-bold bg-transparent text-gray-950 border-2 border-gray-950 py-4 px-12 text-center text-sm hover:bg-gray-800 hover:text-white active:bg-black hover:cursor-pointer"
           >
             Read More
           </Link>

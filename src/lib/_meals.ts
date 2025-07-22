@@ -5,7 +5,9 @@ import slugify from "slugify";
 import xss from "xss";
 import fs from "node:fs/promises";
 import { Meal, Recipe } from "@/components/types";
+import { z } from "zod";
 import { formValidation } from "./_meal-schema";
+import { redirect, RedirectType } from "next/navigation";
 
 export async function getMeals(): Promise<Meal[]> {
   const result = await pool.query<{
@@ -45,20 +47,21 @@ export async function addMeal(formData: FormData) {
     title: formData.get("title")?.toString(),
     summary: formData.get("summary")?.toString(),
     instructions: formData.get("instructions")?.toString(),
-    creator: formData.get("name")?.toString(),
+    creator: formData.get("creator")?.toString(),
     creator_email: formData.get("email")?.toString(),
   };
 
   //validating using zod
-  const result = formValidation.safeParse(rawData);
+  const resultParse = formValidation.safeParse(rawData);
 
-  if (!result.success) {
-    // Optionally: format or log errors
+  if (!resultParse.success) {
+    const err = z.prettifyError(resultParse.error);
+    throw new Error("Failure Spotted: " + JSON.stringify(err));
   }
 
   const recipe = {
-    ...result.data,
-    instructions: xss(result.data.instructions),
+    ...resultParse.data,
+    instructions: xss(resultParse.data.instructions),
   };
 
   const slug = slugify(recipe.title, { lower: true });
