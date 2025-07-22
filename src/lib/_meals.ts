@@ -5,9 +5,8 @@ import slugify from "slugify";
 import xss from "xss";
 import fs from "node:fs/promises";
 import { Meal, Recipe } from "@/components/types";
-import { z } from "zod";
 import { formValidation } from "./_meal-schema";
-import { redirect, RedirectType } from "next/navigation";
+import { AddMealResult } from "@/components/types";
 
 export async function getMeals(): Promise<Meal[]> {
   const result = await pool.query<{
@@ -36,27 +35,39 @@ export async function getRecipe(slug: string): Promise<Recipe | null> {
   return result.rows[0] || null;
 }
 
-export async function addMeal(formData: FormData) {
-  /* Validate image wheter the image is in file format*/
+export async function addMeal(formData: FormData): Promise<AddMealResult> {
   const imageFile = formData.get("image");
   if (!(imageFile instanceof File)) {
-    throw new Error("Please Upload an Image File");
+    return {
+      success: false,
+      errors: { image: ["Please upload an image file."] },
+    };
   }
 
   const rawData = {
-    title: formData.get("title")?.toString(),
-    summary: formData.get("summary")?.toString(),
-    instructions: formData.get("instructions")?.toString(),
-    creator: formData.get("creator")?.toString(),
-    creator_email: formData.get("email")?.toString(),
+    title: formData.get("title")?.toString() ?? "",
+    summary: formData.get("summary")?.toString() ?? "",
+    instructions: formData.get("instructions")?.toString() ?? "",
+    creator: formData.get("creator")?.toString() ?? "",
+    creator_email: formData.get("email")?.toString() ?? "",
   };
 
-  //validating using zod
   const resultParse = formValidation.safeParse(rawData);
 
   if (!resultParse.success) {
-    const err = z.prettifyError(resultParse.error);
-    throw new Error("Failure Spotted: " + JSON.stringify(err));
+    const fieldErrors: Record<string, string[]> = {};
+    for (const issue of resultParse.error.issues) {
+      const field = issue.path[0] as string;
+      if (!fieldErrors[field]) {
+        fieldErrors[field] = [];
+      }
+      fieldErrors[field].push(issue.message);
+    }
+
+    return {
+      success: false,
+      errors: fieldErrors,
+    };
   }
 
   const recipe = {
@@ -65,7 +76,7 @@ export async function addMeal(formData: FormData) {
   };
 
   const slug = slugify(recipe.title, { lower: true });
-  const ext = imageFile.name.split(".").pop(); //extensions
+  const ext = imageFile.name.split(".").pop();
   const fileName = `${slug}.${ext}`;
   const bufferedImage = Buffer.from(await imageFile.arrayBuffer());
   await fs.writeFile(`public/images/${fileName}`, bufferedImage);
@@ -82,5 +93,6 @@ export async function addMeal(formData: FormData) {
       recipe.creator_email,
     ]
   );
-  return slug;
+
+  return { success: true, slug };
 }
