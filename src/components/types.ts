@@ -46,3 +46,7 @@ export type ToastProps = {
   onClose: () => void;
   duration: number;
 };
+
+export type AddMealResult =
+  | { success: true; slug: string }
+  | { success: false; errors: Record<string, string[]> };

@@ -22,7 +22,6 @@ export const formValidation = z.object({
     .min(2, "Full name must be at least 2 characters"),
 
   creator_email: z
-    .string()
-    .nonempty("Email is required")
-    .email("Please enter a valid email address"),
+    .email("Please enter a valid email address")
+    .nonempty("Email Address is required"),
 });
