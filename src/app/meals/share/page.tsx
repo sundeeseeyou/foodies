@@ -24,6 +24,8 @@ export default function NewRecipe() {
     }
   }, [formErrors]);
 
+  const [state, formAction] = useActionState(addMeal, { success: false });
+
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
       {showToast && (
