@@ -6,26 +6,36 @@ import ImagePicker from "../../../components/Shares/ImagePicker";
 import { addMeal } from "@/lib/_meals";
 import { useState, useEffect, useActionState } from "react";
 import ToastBox from "@/components/Shares/ToastBox";
-import { useFormStatus } from "react-dom";
+import { AddMealResult } from "@/components/types";
 
 export default function NewRecipe() {
   const [showToast, setShowToast] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string[]> | null>(
     null
   );
-  const { pending } = useFormStatus();
+
+  const [state, formAction, isPending] = useActionState(
+    async (prev: AddMealResult, formData: FormData) => {
+      return await addMeal(formData);
+    },
+    { success: false, errors: {} }
+  );
+
   useEffect(() => {
-    if (formErrors) {
-      const firstErrorKey = Object.keys(formErrors)[0];
-      const el = document.querySelector(
-        `[name="${firstErrorKey}"]`
-      ) as HTMLElement;
+    if (!state.success) {
+      setFormErrors(state.errors);
+
+      const firstErr = Object.keys(state.errors)[0];
+      const el = document.querySelector(`[name="${firstErr}"]`) as HTMLElement;
       el?.focus();
+    } else {
+      setFormErrors(null);
+      setShowToast(true);
+      setTimeout(() => {
+        window.location.href = "/meals";
+      }, 2000);
     }
-  }, [formErrors]);
-
-  const [state, formAction] = useActionState(addMeal, { success: false });
-
+  }, [state]);
   return (
     <main className="flex flex-row justify-center items-stretch gap-8 my-8 p-4 max-w-screen-xl w-full mx-auto">
       {showToast && (
@@ -35,32 +45,7 @@ export default function NewRecipe() {
           duration={2000}
         />
       )}
-      <form
-        className="flex flex-col w-3/5 gap-4 mx-auto"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-
-          try {
-            const result = await addMeal(formData);
-
-            if (!result.success) {
-              setFormErrors(result.errors);
-              return;
-            }
-
-            setFormErrors(null);
-            setShowToast(true);
-            e.currentTarget.reset();
-            setTimeout(() => {
-              window.location.href = "/meals";
-            }, 2000);
-          } catch (err) {
-            alert("Unexpected error occurred. Please try again.");
-            console.error(err);
-          }
-        }}
-      >
+      <form className="flex flex-col w-3/5 gap-4 mx-auto" action={formAction}>
         <fieldset className="border border-gray-200 rounded-xl px-8 pt-8 pb-12 bg-white">
           <legend className="text-xl px-4">Your Identity</legend>
           <section className="grid lg:grid-cols-2 gap-4">
@@ -176,13 +161,13 @@ export default function NewRecipe() {
         <button
           type="submit"
           className={`block self-end text-xl mt-4 w-auto rounded-full py-3 px-12 text-white transition ${
-            pending
+            isPending
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-green-700 hover:opacity-80 hover:cursor-pointer active:bg-green-400"
           }`}
-          disabled={pending}
+          disabled={isPending}
         >
-          {pending ? "Submitting ..." : "Submit"}
+          {isPending ? "Submitting ..." : "Submit"}
         </button>
       </form>
 
