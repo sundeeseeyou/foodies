@@ -5,7 +5,7 @@ import SectionFeaturesRight from "@/components/homepage/SectionFeatureRight";
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-start gap-8 px-4 py-6 w-full max-w-screen-xl mx-auto">
+    <main className="flex flex-col justify-start gap-8 px-4 py-6 w-full max-w-screen-2xl mx-auto">
       <HeroesImage />
       <MainFeatures></MainFeatures>
       <SectionFeatures></SectionFeatures>

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getRecipe } from "@/lib/_meals";
-import RecipeDetail from "@/components/_RecipeDetails";
+import RecipeDetail from "@/components/meals/_RecipeDetails";
 
 type Props = {
   params: { slug: string };

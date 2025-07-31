@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function CommunityPage() {
   return (
     <main className="flex flex-col gap-8 px-4 py-16 w-full max-w-screen-xl mx-auto">

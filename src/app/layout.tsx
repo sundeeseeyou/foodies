@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col h-full min-h-screen mx-auto items-center antialiased font-display ">
+      <body className="flex flex-col h-full min-h-screen min-w-full mx-auto items-center antialiased font-display">
         <HeaderFoodies />
         {children}
         <Footer />
