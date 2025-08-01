@@ -6,12 +6,12 @@ import { Recipe } from "../types";
 export default function RecipeDetail({ recipe }: { recipe: Recipe }) {
   return (
     <main className="flex flex-col justify-center items-start gap-4 my-8 p-4 max-w-screen-xl h-full w-full mx-auto">
-      <section className="relative w-full min-h-[35rem]">
+      <section className="relative w-2xl min-h-[30rem]">
         <Image
           src={recipe.image}
           alt={recipe.title}
           fill
-          className="object-cover rounded-4xl border-1 border-gray-400"
+          className="object-cover rounded-4xl border-1 border-black"
           sizes="(max-width: 768px) 100%, 50vw"
         />
       </section>
@@ -19,7 +19,7 @@ export default function RecipeDetail({ recipe }: { recipe: Recipe }) {
       <section className="flex flex-col gap-4 justify-start items-start w-full">
         <header className="flex flex-col justify-start w-full gap-4 mx-auto py-8 border-b-1 border-gray-400">
           <h1 className="text-5xl text-green-700 font-bold">{recipe.title}</h1>
-          <p className="text-sm text-gray-500 italic">{recipe.summary}</p>
+          <p className="text-md text-gray-500 italic">{recipe.summary}</p>
           <p>
             Recipe by:{" "}
             <Link
