@@ -15,7 +15,7 @@ export default function NewRecipe() {
   );
 
   const [state, formAction, isPending] = useActionState(
-    async (prev: AddMealResult, formData: FormData) => {
+    async (_: AddMealResult, formData: FormData) => {
       return await addMeal(formData);
     },
     { success: false, errors: {} }
