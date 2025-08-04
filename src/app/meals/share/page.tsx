@@ -7,12 +7,35 @@ import { addMeal } from "@/lib/_meals";
 import { useState, useEffect, useActionState } from "react";
 import ToastBox from "@/components/Shares/ToastBox";
 import { AddMealResult } from "@/components/types";
+import { formValidation } from "@/lib/_meal-schema";
 
 export default function NewRecipe() {
   const [showToast, setShowToast] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string[]> | null>(
     null
   );
+  const [formInfo, setFormInfo] = useState({
+    title: "",
+    summary: "",
+    instructions: "",
+    creator: "",
+    creator_email: "",
+    image: null as File | null,
+  });
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = e.target;
+
+    setFormInfo((prev) => ({ ...prev, [name]: value }));
+  }
+
+  const isFormComplete =
+    formValidation.safeParse({
+      ...formInfo,
+      email: formInfo.creator_email,
+    }).success && formInfo.image !== null;
 
   const [state, formAction, isPending] = useActionState(
     async (_: AddMealResult, formData: FormData) => {
@@ -61,6 +84,8 @@ export default function NewRecipe() {
                 type="text"
                 id="fullname"
                 name="creator"
+                value={formInfo.creator}
+                onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="John Doe"
               />
@@ -79,7 +104,10 @@ export default function NewRecipe() {
               </label>
               <input
                 id="email"
-                name="email"
+                type="email"
+                name="creator_email"
+                value={formInfo.creator_email}
+                onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="you@example.com"
               />
@@ -105,6 +133,8 @@ export default function NewRecipe() {
                 type="text"
                 id="recipe-title"
                 name="title"
+                value={formInfo.title}
+                onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Recipe Name"
               />
@@ -125,6 +155,8 @@ export default function NewRecipe() {
                 type="text"
                 id="summary"
                 name="summary"
+                value={formInfo.summary}
+                onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="The best food in town ..."
               />
@@ -143,6 +175,8 @@ export default function NewRecipe() {
             <textarea
               id="instructions"
               name="instructions"
+              value={formInfo.instructions}
+              onChange={handleChange}
               rows={4}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Write down your instruction here..."
@@ -153,7 +187,16 @@ export default function NewRecipe() {
               </p>
             )}
 
-            <ImagePicker label="Upload your food" name="image" />
+            <ImagePicker
+              label="Upload your food"
+              name="image"
+              onChange={(file) =>
+                setFormInfo((prev) => ({
+                  ...prev,
+                  image: file,
+                }))
+              }
+            />
             {formErrors?.image && (
               <p className="text-red-600 text-sm mt-1">{formErrors.image[0]}</p>
             )}
@@ -166,9 +209,9 @@ export default function NewRecipe() {
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-green-700 hover:opacity-80 hover:cursor-pointer active:bg-green-400"
           }`}
-          disabled={isPending}
+          disabled={!isFormComplete || isPending}
         >
-          {isPending ? "Submitting ..." : "Submit"}
+          {isPending ? "..." : "Submit"}
         </button>
       </form>
 

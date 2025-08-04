@@ -23,6 +23,12 @@ export type Strings = {
   name: string;
 };
 
+export type ImageFile = {
+  label?: string;
+  name: string;
+  onChange?: (file: File | null) => void;
+};
+
 export type Meal = {
   slug: string;
   title: string;

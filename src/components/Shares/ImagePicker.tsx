@@ -1,10 +1,10 @@
 "use client";
 import { useRef, useState } from "react";
-import { Strings } from "../types";
+import { ImageFile } from "../types";
 import Image from "next/image";
 import { MdOutlineFileUpload } from "react-icons/md";
 
-export default function ImagePicker({ label, name }: Strings) {
+export default function ImagePicker({ label, name, onChange }: ImageFile) {
   const [pickImage, setPickImage] = useState<string | null>(null);
   const imageInput = useRef<HTMLInputElement>(null);
 
@@ -13,7 +13,7 @@ export default function ImagePicker({ label, name }: Strings) {
   };
 
   const imageHandlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files?.[0] || null;
 
     if (!file) {
       setPickImage(null);
@@ -24,6 +24,7 @@ export default function ImagePicker({ label, name }: Strings) {
 
     fileReader.onload = () => {
       setPickImage(fileReader.result as string);
+      onChange?.(file);
     };
 
     fileReader.readAsDataURL(file);
