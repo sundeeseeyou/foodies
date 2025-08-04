@@ -21,6 +21,7 @@ export default function NewRecipe() {
     { success: false, errors: {} }
   );
 
+  //the implementation of Zod
   useEffect(() => {
     if (!state.success) {
       setFormErrors(state.errors);
