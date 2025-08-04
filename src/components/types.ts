@@ -8,10 +8,10 @@ export type RecipeCard = {
   user: string;
 };
 
-export interface StringType {
+export type StringType = {
   string: string;
   children: ReactNode;
-}
+};
 
 export type LinkType = {
   href: string;
