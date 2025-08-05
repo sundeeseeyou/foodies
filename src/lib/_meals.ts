@@ -49,7 +49,7 @@ export async function addMeal(formData: FormData): Promise<AddMealResult> {
     summary: formData.get("summary")?.toString() ?? "",
     instructions: formData.get("instructions")?.toString() ?? "",
     creator: formData.get("creator")?.toString() ?? "",
-    creator_email: formData.get("email")?.toString() ?? "",
+    creator_email: formData.get("creator_email")?.toString() ?? "",
   };
 
   const resultParse = formValidation.safeParse(rawData);
