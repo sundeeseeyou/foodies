@@ -84,7 +84,6 @@ export default function NewRecipe() {
                 type="text"
                 id="fullname"
                 name="creator"
-                value={formInfo.creator}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="John Doe"
@@ -106,7 +105,6 @@ export default function NewRecipe() {
                 id="email"
                 type="email"
                 name="creator_email"
-                value={formInfo.creator_email}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="you@example.com"
@@ -133,7 +131,6 @@ export default function NewRecipe() {
                 type="text"
                 id="recipe-title"
                 name="title"
-                value={formInfo.title}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Recipe Name"
@@ -175,7 +172,6 @@ export default function NewRecipe() {
             <textarea
               id="instructions"
               name="instructions"
-              value={formInfo.instructions}
               onChange={handleChange}
               rows={4}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
