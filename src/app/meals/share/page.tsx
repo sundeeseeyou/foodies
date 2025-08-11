@@ -14,6 +14,8 @@ export default function NewRecipe() {
   const [formErrors, setFormErrors] = useState<Record<string, string[]> | null>(
     null
   );
+  const [isFormComplete, setFormComplete] = useState(false);
+
   const [formInfo, setFormInfo] = useState({
     title: "",
     summary: "",
@@ -23,6 +25,15 @@ export default function NewRecipe() {
     image: null as File | null,
   });
 
+  useEffect(() => {
+    const result = formValidation.safeParse({
+      ...formInfo,
+      email: formInfo.creator_email,
+    });
+
+    setFormComplete(result.success && formInfo.image !== null);
+  }, [formInfo]);
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
@@ -30,12 +41,6 @@ export default function NewRecipe() {
 
     setFormInfo((prev) => ({ ...prev, [name]: value }));
   }
-
-  const isFormComplete =
-    formValidation.safeParse({
-      ...formInfo,
-      email: formInfo.creator_email,
-    }).success && formInfo.image !== null;
 
   const [state, formAction, isPending] = useActionState(
     async (_: AddMealResult, formData: FormData) => {
@@ -84,6 +89,7 @@ export default function NewRecipe() {
                 type="text"
                 id="fullname"
                 name="creator"
+                value={formInfo.creator}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="John Doe"
@@ -105,6 +111,7 @@ export default function NewRecipe() {
                 id="email"
                 type="email"
                 name="creator_email"
+                value={formInfo.creator_email}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="you@example.com"
@@ -131,6 +138,7 @@ export default function NewRecipe() {
                 type="text"
                 id="recipe-title"
                 name="title"
+                value={formInfo.title}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Recipe Name"
@@ -173,6 +181,7 @@ export default function NewRecipe() {
               id="instructions"
               name="instructions"
               onChange={handleChange}
+              value={formInfo.instructions}
               rows={4}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Write down your instruction here..."
@@ -201,7 +210,7 @@ export default function NewRecipe() {
         <button
           type="submit"
           className={`block self-end text-xl mt-4 w-auto rounded-full py-3 px-12 text-white transition ${
-            isPending
+            !isFormComplete || isPending
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-green-700 hover:opacity-80 hover:cursor-pointer active:bg-green-400"
           }`}
@@ -209,6 +218,12 @@ export default function NewRecipe() {
         >
           {isPending ? "..." : "Submit"}
         </button>
+
+        {!isFormComplete && (
+          <p className="text-sm text-gray-500 mt-2 text-right">
+            *Lengkapi semua field dan upload gambar untuk mengaktifkan tombol.
+          </p>
+        )}
       </form>
 
       <section className="relative w-2/5">
