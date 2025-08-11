@@ -22,7 +22,7 @@ export default function MealsItem({
       </div>
 
       <div className="flex flex-col p-8 gap-2">
-        <h4 className="text-2xl font-semibold">{title}</h4>
+        <h4 className="text-2xl font-semibold line-clamp-2">{title}</h4>
         <p className="text-xs text-gray-400">By {user}</p>
         <p className="text-md text-gray-800 line-clamp-2">{summary}</p>
         <Link
