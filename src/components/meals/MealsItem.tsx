@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { RecipeCard } from "./types";
+import { RecipeCard } from "../types";
 
 export default function MealsItem({
   title,
