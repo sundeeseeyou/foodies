@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { ToastProps } from "./types";
+import { ToastProps } from "../types";
 import { HiCheckCircle } from "react-icons/hi";
 
 export default function ToastBox({
