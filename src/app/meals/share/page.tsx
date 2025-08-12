@@ -220,8 +220,8 @@ export default function NewRecipe() {
         </button>
 
         {!isFormComplete && (
-          <p className="text-sm text-gray-500 mt-2 text-right">
-            *Lengkapi semua field dan upload gambar untuk mengaktifkan tombol.
+          <p className="text-xs self-end text-gray-400 mt-2 w-48 text-right">
+            *Fill in the fields and upload the image before submitting
           </p>
         )}
       </form>
