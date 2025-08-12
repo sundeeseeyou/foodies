@@ -7,6 +7,7 @@ import fs from "node:fs/promises";
 import { Meal, Recipe } from "@/components/types";
 import { formValidation } from "./_meal-schema";
 import { AddMealResult } from "@/components/types";
+import { revalidatePath } from "next/cache";
 
 export async function getMeals(): Promise<Meal[]> {
   const result = await pool.query<{
@@ -94,5 +95,6 @@ export async function addMeal(formData: FormData): Promise<AddMealResult> {
     ]
   );
 
+  revalidatePath("/", "layout");
   return { success: true, slug };
 }
