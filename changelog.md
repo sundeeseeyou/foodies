@@ -1,43 +1,11 @@
-# Changelog Foodies Recipe Project
+# Changelog
 
-## [1.1.2] - 2025-07-15
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### Added
+## 2.1.0 (2025-08-19)
 
-- Set maxlimit upload on next js from 1mb default to 5mb
 
-## [1.1.1] - 2025-07-09
+### Features
 
-### Added
-
-- Add Main Features section with random images
-- Add pending useFormStatus on button, so it will change in a glance, during sending the data
-
-## [1.1.0] - 2025-07-06
-
-### Added
-
-- Successfully add the line code to put inputs of the form inside the database
-- Combine 2 files to handle database, inside /lib/ from 2 files, become 1 file named \_meals.ts
-- Forms page under share/page.tsx
-
-## [1.0.2] - 2025-07-01
-
-### Added
-
-- Add "New Recipe" button so user can create their own recipe
-- Add not found inside [slug] folder so if the recipe doesnt exist, it will fallback to the not found page specifically
-
-## [1.0.1] - 2025-06-18
-
-### Added
-
-- Try to call the props from SinglePage and show it on Page.tsx in [slug] folder
-- Add custom component under the name <SinglePage />
-- Try to initiate single page
-
-## [1.0.0] - 2025-06-17
-
-### Added
-
-- Initial setup changelog
+* **app:** new things updated and added ([9654b1a](https://github.com/sundeeseeyou/foodies/commit/9654b1acf7657f9e89cfd3d6d64bbdc447af8a63))
+* **deps:** Add commit-lint Standard Version ([cc9608d](https://github.com/sundeeseeyou/foodies/commit/cc9608d9dfd5f652da902271ee75329a94a5bd43))
