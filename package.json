@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -24,11 +28,14 @@
     "zod": "^4.0.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.15.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
