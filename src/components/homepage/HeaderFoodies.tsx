@@ -6,7 +6,7 @@ export default function HeaderFoodies() {
   return (
     <>
       <header className="flex flex-row w-full bg-white shadow justify-center items-center max-h-[5rem]">
-        <div className="flex flex-row justify-between px-4 items-center py-4 w-full mx-auto">
+        <div className="flex flex-row justify-between px-4 items-center py-4 w-[1600px] mx-auto">
           <Link href="/">
             <div className="relative w-24 aspect-[4/3]">
               <Image
