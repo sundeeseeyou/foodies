@@ -3,11 +3,31 @@
 import pool from "@/lib/db";
 import slugify from "slugify";
 import xss from "xss";
-import fs from "node:fs/promises";
+// import fs from "node:fs/promises";
 import { Meal, Recipe } from "@/components/types";
 import { formValidation } from "./_meal-schema";
 import { AddMealResult } from "@/components/types";
 import { revalidatePath } from "next/cache";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+// Add checks to ensure environment variables are defined
+if (
+  !process.env.CLOUDFLARE_ACCESS_KEY_ID ||
+  !process.env.CLOUDFLARE_SECRET_ACCESS_KEY
+) {
+  throw new Error(
+    "Cloudflare R2 credentials are not set in environment variables."
+  );
+}
+
+const s3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: process.env.CLOUDFLARE_ACCESS_KEY_ID,
+    secretAccessKey: process.env.CLOUDFLARE_SECRET_ACCESS_KEY,
+  },
+});
 
 export async function getMeals(): Promise<Meal[]> {
   const result = await pool.query<{
@@ -80,14 +100,25 @@ export async function addMeal(formData: FormData): Promise<AddMealResult> {
   const ext = imageFile.name.split(".").pop();
   const fileName = `${slug}.${ext}`;
   const bufferedImage = Buffer.from(await imageFile.arrayBuffer());
-  await fs.writeFile(`public/images/${fileName}`, bufferedImage);
+  // await fs.writeFile(`public/images/${fileName}`, bufferedImage); <-- Getting disabled if you want to use S3 AWS system
+
+  // Upload image to S3
+  await s3.send(
+    new PutObjectCommand({
+      Bucket: process.env.R2_BUCKET_NAME, // Replace with your S3 bucket name
+      Key: fileName,
+      Body: bufferedImage,
+      ContentType: imageFile.type,
+    })
+  );
 
   await pool.query(
     "INSERT INTO meals (slug, title, image, summary, instructions, creator, creator_email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
     [
       slug,
       recipe.title,
-      `/images/${fileName}`,
+      // `/images/${fileName}` <-- this is for local only,
+      fileName,
       recipe.summary,
       recipe.instructions,
       recipe.creator,

@@ -13,7 +13,7 @@ export default function MealsItem({
     <section className="flex flex-col justify-start h-full bg-white shadow-md rounded-xl overflow-hidden">
       <div className="relative w-full h-64 mb-2">
         <Image
-          src={image}
+          src={`${process.env.R2_PUBLIC_URL}/${image}`}
           alt={title}
           fill
           className="object-cover rounded-md"

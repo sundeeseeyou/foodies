@@ -8,7 +8,7 @@ export default function RecipeDetail({ recipe }: { recipe: Recipe }) {
     <main className="flex flex-col justify-center items-start gap-4 my-8 p-4 max-w-screen-xl h-full w-full mx-auto">
       <section className="relative w-2xl min-h-[30rem]">
         <Image
-          src={recipe.image}
+          src={`${process.env.R2_PUBLIC_URL}/${recipe.image}`}
           alt={recipe.title}
           fill
           className="object-cover rounded-4xl border-1 border-black"
