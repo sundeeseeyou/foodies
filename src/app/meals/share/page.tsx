@@ -8,8 +8,10 @@ import { useState, useEffect, useActionState } from "react";
 import ToastBox from "@/components/Shares/ToastBox";
 import { AddMealResult } from "@/components/types";
 import { formValidation } from "@/lib/_meal-schema";
+import { useRouter } from "next/navigation";
 
 export default function NewRecipe() {
+  const router = useRouter();
   const [showToast, setShowToast] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string[]> | null>(
     null
@@ -61,7 +63,7 @@ export default function NewRecipe() {
       setFormErrors(null);
       setShowToast(true);
       setTimeout(() => {
-        window.location.href = "/meals";
+        router.push("/meals");
       }, 2000);
     }
   }, [state]);
