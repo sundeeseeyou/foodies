@@ -6,8 +6,8 @@ import Meals from "@/components/meals/_Meals";
 import Loading from "./FoodLoading";
 
 export const metadata: Metadata = {
-  title: "Share Your Own Recipe",
-  description: "Best thing to do is sharing happiness",
+  title: "List of Recipe by Our Community",
+  description: "Enjoy Your DIY Meals!",
 };
 
 export default async function MealsPage() {
