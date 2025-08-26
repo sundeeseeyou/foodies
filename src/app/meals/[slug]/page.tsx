@@ -7,7 +7,7 @@ type Params = {
 };
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const recipe = await getRecipe(slug);
 
   if (!recipe) {

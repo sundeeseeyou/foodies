@@ -4,10 +4,12 @@ import HeaderFoodies from "@/components/homepage/HeaderFoodies";
 import Footer from "../components/homepage/Footer";
 
 export const metadata: Metadata = {
-  title: "Food Network",
-  description: "Online Recipe Book you can cook at home",
+  title: {
+    default: "Find and Share Recipes",
+    template: "%s | Foodies",
+  },
+  description: "Browse and discover great recipes.",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
